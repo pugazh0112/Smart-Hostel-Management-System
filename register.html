@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h2>🏨 Hostel Management</h2>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <h2 style="text-align: center;">Student Hostel Registration</h2>
+
+    <div class="form">
+        <form>
+            <input type="text" id="name" placeholder="Full Name"><br>
+            <input type="text" id="regNo" placeholder="Register Number"><br>
+            <input type="text" id="dept" placeholder="Department"><br>
+            <input type="text" id="year" placeholder="Year"><br>
+            <input type="text" id="phone" placeholder="Phone Number"><br>
+            <input type="text" id="parentPhone" placeholder="Parent Number"><br>
+            <textarea id="address" placeholder="Address"></textarea><br>
+
+            <button type="button" onclick="submitApplication()">Submit Application</button>
+        </form>
+    </div>
+
+   <script>
+function submitApplication() {
+
+  const name = document.getElementById("name").value;
+  const regNo = document.getElementById("regNo").value;
+  const dept = document.getElementById("dept").value;
+  const year = document.getElementById("year").value;
+  const phone = document.getElementById("phone").value;
+  const parentPhone = document.getElementById("parentPhone").value;
+  const address = document.getElementById("address").value;
+
+  const data = {
+    name: name,
+    regNo: regNo,
+    dept: dept,
+    year: year,
+    phone: phone,
+    parentPhone: parentPhone,
+    address: address
+  };
+
+  console.log("Sending:", data);
+
+  fetch("http://localhost:8080/register", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(result => {
+    alert("Application Submitted Successfully ✅");
+    console.log("Saved:", result);
+  })
+  .catch(error => {
+    console.error("Error:", error);
+  });
+}
+</script>
+</body>
+</html>
