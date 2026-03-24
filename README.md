@@ -1,4 +1,5 @@
 # 🏨 Smart Hostel Management System (Full-Stack)
+![App Dashboard](dashboard.png)
 
 A modern, role-based application built with **React**, **Spring Boot**, and **MySQL** to manage hostel operations seamlessly.
 
