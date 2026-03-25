@@ -27,7 +27,7 @@ function Register() {
     console.log("Sending:", formData);
 
     try {
-      const response = await fetch("http://localhost:8080/register", {
+      const response = await fetch("https://smart-hostel-management-system-backend-6als.onrender.com/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

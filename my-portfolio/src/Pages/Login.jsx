@@ -23,7 +23,7 @@ function Login() {
     console.log("Login Details Sending:", credentials);
 
     try {
-      const response = await fetch("http://localhost:8080/login", {
+      const response = await fetch("https://smart-hostel-management-system-backend-6als.onrender.com/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

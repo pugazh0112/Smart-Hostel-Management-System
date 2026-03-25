@@ -12,13 +12,13 @@ function Dashboard() {
 
   useEffect(() => {
     if (currentUserRegNo) {
-      fetch(`http://localhost:8080/my-leaves/${currentUserRegNo}`)
+      fetch(`https://smart-hostel-management-system-backend-6als.onrender.com/my-leaves/${currentUserRegNo}`)
         .then(res => res.json())
         .then(data => setMyLeaves(data))
         .catch(err => console.error("Error fetching leaves:", err));
     }
 
-    fetch("http://localhost:8080/get-notices") 
+    fetch("https://smart-hostel-management-system-backend-6als.onrender.com/get-notices") 
       .then(res => res.json())
       .then(data => setNotices(data))
       .catch(err => console.error("Notice fetch error:", err));
@@ -27,7 +27,7 @@ function Dashboard() {
   }, [currentUserRegNo]);
 
   const fetchRooms = () => {
-    fetch("http://localhost:8080/rooms/all")
+    fetch("https://smart-hostel-management-system-backend-6als.onrender.com/rooms/all")
       .then(res => res.json())
       .then(data => setRooms(data))
       .catch(err => console.error("Room fetch error:", err));
@@ -36,7 +36,7 @@ function Dashboard() {
   const handleBookRoom = async (roomNumber) => {
     if (window.confirm(`Are you sure you want to book Room ${roomNumber}?`)) {
       try {
-        const response = await fetch(`http://localhost:8080/rooms/book/${roomNumber}/${currentUserRegNo}`, {
+        const response = await fetch(`https://smart-hostel-management-system-backend-6als.onrender.com/rooms/book/${roomNumber}/${currentUserRegNo}`, {
           method: 'PUT'
         });
         

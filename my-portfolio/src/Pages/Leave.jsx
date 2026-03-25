@@ -26,7 +26,7 @@ function Leave() {
     console.log("Applying Leave:", leaveData);
 
     try {
-      const response = await fetch("http://localhost:8080/leave", {
+      const response = await fetch("https://smart-hostel-management-system-backend-6als.onrender.com/leave", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

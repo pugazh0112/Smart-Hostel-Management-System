@@ -24,7 +24,7 @@ function Complaint() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8080/complaint", {
+      const response = await fetch("https://smart-hostel-management-system-backend-6als.onrender.com/complaint", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(complaintData)

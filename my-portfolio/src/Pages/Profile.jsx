@@ -9,7 +9,7 @@ function Profile() {
 
   useEffect(() => {
     if (currentUserRegNo) {
-      fetch(`http://localhost:8080/profile/${currentUserRegNo}`)
+      fetch(`https://smart-hostel-management-system-backend-6als.onrender.com/profile/${currentUserRegNo}`)
         .then(res => res.json())
         .then(data => setUserData(data))
         .catch(err => console.error("Error fetching profile:", err));

@@ -17,14 +17,14 @@ function WardenDashboard() {
     fetchRooms();
   }, []);
 
-  const fetchLeaves = () => fetch("http://localhost:8080/leaves/all").then(res => res.json()).then(setAllLeaves);
-  const fetchComplaints = () => fetch("http://localhost:8080/complaints/all").then(res => res.json()).then(setAllComplaints);
-  const fetchRooms = () => fetch("http://localhost:8080/rooms/all").then(res => res.json()).then(setRooms);
+  const fetchLeaves = () => fetch("https://smart-hostel-management-system-backend-6als.onrender.com/leaves/all").then(res => res.json()).then(setAllLeaves);
+  const fetchComplaints = () => fetch("https://smart-hostel-management-system-backend-6als.onrender.com/complaints/all").then(res => res.json()).then(setAllComplaints);
+  const fetchRooms = () => fetch("https://smart-hostel-management-system-backend-6als.onrender.com/rooms/all").then(res => res.json()).then(setRooms);
 
   const handlePostNotice = async (e) => {
     e.preventDefault();
     if (!notice.title || !notice.content) return alert("Please fill all fields!");
-    const response = await fetch("http://localhost:8080/add-notices", {
+    const response = await fetch("https://smart-hostel-management-system-backend-6als.onrender.com/add-notices", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(notice)
@@ -38,7 +38,7 @@ function WardenDashboard() {
   const handleAddRoom = async (e) => {
     e.preventDefault();
     if (!newRoom.roomNumber) return alert("Room Number is required!");
-    const response = await fetch("http://localhost:8080/rooms/add", {
+    const response = await fetch("https://smart-hostel-management-system-backend-6als.onrender.com/rooms/add", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ...newRoom, occupiedBeds: 0 }) 
@@ -51,12 +51,12 @@ function WardenDashboard() {
   };
 
   const handleStatusUpdate = async (id, newStatus) => {
-    const response = await fetch(`http://localhost:8080/leave/update/${id}?status=${newStatus}`, { method: "PUT" });
+    const response = await fetch(`https://smart-hostel-management-system-backend-6als.onrender.com/leave/update/${id}?status=${newStatus}`, { method: "PUT" });
     if (response.ok) { alert(`Leave ${newStatus}!`); fetchLeaves(); }
   };
 
   const handleResolveComplaint = async (id) => {
-    const response = await fetch(`http://localhost:8080/complaint/resolve/${id}`, { method: "PUT" });
+    const response = await fetch(`https://smart-hostel-management-system-backend-6als.onrender.com/complaint/resolve/${id}`, { method: "PUT" });
     if (response.ok) { alert("Resolved! ✅"); fetchComplaints(); }
   };
 
